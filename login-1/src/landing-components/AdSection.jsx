@@ -18,6 +18,7 @@ const AdSection = () => {
           <img src={Arrow} alt="" />
         </button>
       </div>
+      <div></div>
     </section>
   );
 };
