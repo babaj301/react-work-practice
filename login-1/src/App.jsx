@@ -10,7 +10,7 @@ import {
 
 function App() {
   return (
-    <>
+    <div>
       <Router>
         <Routes>
           <Route path="/" element={<Login1 />} />
@@ -20,7 +20,7 @@ function App() {
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </Router>
-    </>
+    </div>
   );
 }
 
