@@ -1,4 +1,3 @@
-import React from 'react';
 import ChineseGirls from '../assets/landing-assets/chinese-girls.svg';
 import Pool from '../assets/landing-assets/pool.svg';
 import Arrow from '../assets/landing-assets/shop-arrow.svg';

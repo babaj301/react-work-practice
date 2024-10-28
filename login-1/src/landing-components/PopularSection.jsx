@@ -1,10 +1,8 @@
-import React from 'react';
-
 const PopularSection = () => {
   return (
     <div className="mb-20">
       <div className="flex justify-between items-center mb-6">
-        <div class="text-3xl font-semibold text-[#101928] text-left">
+        <div className="text-3xl font-semibold text-[#101928] text-left">
           <p>Popular</p>
         </div>
       </div>
