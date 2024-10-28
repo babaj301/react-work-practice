@@ -33,10 +33,10 @@ const Card = ({ image, category, id, title, price, rating, count }) => {
           </div>
           <p className="text-sm text-[#1D2739]">{count}</p>
         </div>
-        <div className="flex gap-2 w-36 px-4 py-2 rounded-full border border-[#D0D5DD] text-[#667185] ">
+        <button className="flex gap-2 w-36 px-4 py-2 rounded-full border border-[#D0D5DD] text-[#667185] ">
           <img src={Cart} alt="" />
           <p className="text-sm font-medium">Add to cart</p>
-        </div>
+        </button>
       </div>
     </div>
   );
