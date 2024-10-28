@@ -16,7 +16,6 @@ function App() {
           <Route path="/" element={<Login1 />} />
           <Route path="/login2" element={<Login2 />} />
           <Route path="/landing" element={<LandingPage />} />
-
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </Router>

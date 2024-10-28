@@ -8,11 +8,14 @@ import MessageIcon from '../assets/message.svg';
 import Google from '../assets/icons8-google.svg';
 import Twitter from '../assets/icons8-twitter.svg';
 import AccountSection from './AccountSection';
+import { useNavigate } from 'react-router-dom';
 
 const Form = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [eye, setEye] = useState(true);
+  const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
   const db = {
     email,
@@ -28,13 +31,31 @@ const Form = () => {
 
   const changeEye = () => {
     setEye(!eye);
+    setShowPassword(!showPassword);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(password.value);
-    db.email = email;
-    db.password = password;
+
+    if (email === '') {
+      alert(`Please input a valid email`);
+      return;
+    }
+
+    if (password === '') {
+      alert(`Please input a valid password`);
+      setEmail('');
+      return;
+    }
+
+    if (db.email !== '' && db.password !== '') {
+      db.email = email;
+      db.password = password;
+
+      console.log(db);
+
+      navigate('/landing');
+    }
 
     console.log(db);
   };
@@ -46,12 +67,13 @@ const Form = () => {
       />
       <form name="email" method="post" onSubmit={handleSubmit}>
         <div>
-          <label className="font-medium text-sm text-[#101928]">
+          <label className="font-medium text-sm text-[#101928]" htmlFor="email">
             EMAIL ADDRESS
           </label>
           <div className="w-full mt-1 mb-6 flex items-center relative placeholder-[#98A2B3]">
             <input
               className="w-full p-4 rounded-lg border border-[#D0D5DD] hover:border-[#FA9874] appearance-none outline-none shadow-md"
+              id="email"
               type="email"
               placeholder="Enter email"
               value={email}
@@ -62,17 +84,27 @@ const Form = () => {
         </div>
 
         <div className="gap-2">
-          <label className="font-medium text-sm text-[#101928]">PASSWORD</label>
+          <label
+            className="font-medium text-sm text-[#101928]"
+            htmlFor="password"
+          >
+            PASSWORD
+          </label>
           <div className="w-full mt-1 mb-6 flex items-center relative placeholder-[#98A2B3]">
             <input
               className="w-full p-4 rounded-lg border border-[#D0D5DD] hover:border-[#FA9874] appearance-none outline-none shadow-md"
-              type="password"
+              type={showPassword ? 'text' : 'password'}
+              id="password"
               placeholder="Enter Password"
               value={password}
               onChange={handlePasswordChange}
             />
-            <button onClick={changeEye} className=" absolute ml-2 right-6">
-              <img className="slash" src={eye ? Eye : SlashIcon} alt="" />
+            <button
+              onClick={changeEye}
+              className="absolute ml-2 right-6"
+              type="button"
+            >
+              <img className="slash" src={eye ? SlashIcon : Eye} alt="" />
             </button>
           </div>
         </div>
