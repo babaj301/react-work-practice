@@ -6,7 +6,6 @@ import { useState } from 'react';
 const Card = ({
   image,
   category,
-  id,
   title,
   price,
   rating,
@@ -36,7 +35,7 @@ const Card = ({
 
   return (
     <div>
-      <div className=" flex flex-col gap-1 justify-evenly min-h-[400px] max-h-[450px]">
+      <div className=" flex flex-col gap-1 justify-evenly min-h-[400px] max-h-[400px]">
         <div className="flex flex-col justify-evenly">
           <img
             className="w-full object-cover min-h-[260px] max-h-[260px] rounded-md"
@@ -53,7 +52,7 @@ const Card = ({
             <span className="text-xs font-semibold">{splitPrice[1]}</span>
           </p>
         </div>
-        <p className="text-xs text-[#1D2739]">{title}</p>
+        <p className="text-xs text-[#1D2739]">{title.slice(0, 30)}</p>
         <div className="flex items-center gap-2">
           <div className="flex justify-between">
             {Array.from({ length: roundedRating }, (_, i) => (
@@ -62,7 +61,7 @@ const Card = ({
           </div>
           <p className="text-sm text-[#1D2739]">{count}</p>
         </div>
-        {exists ? (
+        {exists || quantity ? (
           <div className="flex gap-2 border-gray-400 border-2 rounded-full max-w-36 items-center justify-evenly text-lg">
             <button onClick={handleMinus}>-</button>
             <p>{quantity}</p>
@@ -71,7 +70,7 @@ const Card = ({
         ) : (
           <button
             onClick={handleExists}
-            className="flex gap-2 w-36 px-4 py-2 rounded-full border border-[#D0D5DD] text-[#667185] "
+            className="flex gap-2 min-w-24 max-w-36 px-4 py-2 rounded-full border border-[#D0D5DD] text-[#667185] "
           >
             <img src={Cart} alt="" />
             <p className="text-sm font-medium">Add to cart</p>

@@ -1,4 +1,3 @@
-import React from 'react';
 import Logo from '../assets/landing-assets/rayna-logo.svg';
 import Search from '../assets/landing-assets/search.svg';
 import User from '../assets/landing-assets/user.svg';
@@ -6,9 +5,15 @@ import Heart from '../assets/landing-assets/heart.svg';
 import CartIcon from '../assets/landing-assets/cart.svg';
 import { StoreContext } from '../StoreContext';
 import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Nav = () => {
   const { cart } = useContext(StoreContext);
+  const navigate = useNavigate();
+
+  const handleCart = () => {
+    navigate('/landing/cart');
+  };
   return (
     <div>
       <nav className="flex py-6 justify-between">
@@ -43,13 +48,16 @@ const Nav = () => {
                 All Categories
               </p>
             </div>
-            <div className="flex relative flex-col gap-1 items-center justify-center text-center">
+            <button
+              onClick={handleCart}
+              className="flex relative flex-col gap-1 items-center justify-center text-center"
+            >
               <img src={CartIcon} alt="" />
               <p className="text-[#101928] text-xs font-medium">Cart</p>
               <div className="text-white text-md bg-amber-600 rounded-full w-5 h-5 flex justify-center items-center font-medium absolute left-6 top-0">
                 {cart.length}
               </div>
-            </div>
+            </button>
           </div>
         </div>
       </nav>

@@ -1,9 +1,19 @@
-import { createContext, useState } from 'react';
+import { createContext, useState, useEffect } from 'react';
 
 export const StoreContext = createContext();
 
 export const StoreProvider = ({ children }) => {
-  const [cart, setCart] = useState([]);
+  // Making data persist over page refreshes
+  const [cart, setCart] = useState(() => {
+    const savedCart = localStorage.getItem('cart');
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
+
+  console.log(cart, 'cart after json');
 
   const updateCart = (item) => {
     const exist = cart.find((i) => i.id === item.id);
@@ -20,10 +30,6 @@ export const StoreProvider = ({ children }) => {
   };
 
   const deleteCart = (item) => {
-    // if (item.quantity === 1) {
-    //   return setCart(cart.filter((i) => i.id !== item.id));
-    // } else
-
     return setCart((prevCart) =>
       prevCart
         .map((i) => (i.id === item.id ? { ...i, quantity: i.quantity - 1 } : i))
