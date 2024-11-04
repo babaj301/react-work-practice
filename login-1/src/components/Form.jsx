@@ -9,12 +9,14 @@ import Google from '../assets/icons8-google.svg';
 import Twitter from '../assets/icons8-twitter.svg';
 import AccountSection from './AccountSection';
 import { useNavigate } from 'react-router-dom';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Form = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [eye, setEye] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
+  const [verified, setVerified] = useState(false);
   const navigate = useNavigate();
 
   const db = {
@@ -23,10 +25,40 @@ const Form = () => {
   };
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(email)) {
+      console.log(email, password);
+      setVerified(false);
+    } else if (emailRegex && password.length < 2) {
+      setVerified(false);
+    } else if (emailRegex.test(email) && password) {
+      console.log(email, password);
+      setVerified(true);
+    } else {
+      console.log(email, password);
+      setVerified(false);
+    }
+
+    console.log(email, password);
   };
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(email)) {
+      console.log(email, password);
+      setVerified(false);
+    } else if (emailRegex && password.length < 2) {
+      setVerified(false);
+    } else if (emailRegex.test(email) && password) {
+      console.log(email, password);
+      setVerified(true);
+    } else {
+      console.log(email, password);
+      setVerified(false);
+    }
   };
 
   const changeEye = () => {
@@ -35,20 +67,22 @@ const Form = () => {
   };
 
   const handleSubmit = (event) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
     event.preventDefault();
 
-    if (email === '') {
-      alert(`Please input a valid email`);
+    if (email === '' || emailRegex.test(email) === false) {
+      toast(`Please input a valid email`);
       return;
     }
 
     if (password === '') {
-      alert(`Please input a valid password`);
-      setEmail('');
+      toast(`Please input a valid password`);
       return;
     }
 
-    if (db.email !== '' && db.password !== '') {
+    if (emailRegex.test(email) && db.password !== '') {
+      setVerified(true);
       db.email = email;
       db.password = password;
 
@@ -65,6 +99,7 @@ const Form = () => {
         heading={'Log In'}
         paragraph={'Enter your credentials to access you account'}
       />
+      <Toaster />
       <form name="email" method="post" onSubmit={handleSubmit}>
         <div>
           <label className="font-medium text-sm text-[#101928]" htmlFor="email">
@@ -74,7 +109,7 @@ const Form = () => {
             <input
               className="w-full p-4 rounded-lg border border-[#D0D5DD] hover:border-[#FA9874] appearance-none outline-none shadow-md"
               id="email"
-              type="email"
+              type="text"
               placeholder="Enter email"
               value={email}
               onChange={handleEmailChange}
@@ -110,7 +145,9 @@ const Form = () => {
         </div>
         <RememberSection />
         <button
-          className="form-button w-full font-semibold text-base text-white py-4 px-6 rounded-lg mb-4 bg-[#EB5017]"
+          className={`form-button w-full font-semibold text-base text-white py-4 px-6 rounded-lg mb-4 ${
+            verified ? 'bg-[#EB5017]' : 'bg-[#EB5017] opacity-50'
+          }`}
           type="submit"
         >
           Log into Account
