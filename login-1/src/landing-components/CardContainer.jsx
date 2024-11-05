@@ -40,7 +40,7 @@ const CardContainer = () => {
         <p>Popular</p>
       </div>
 
-      <div className="grid grid-rows-1 grid-cols-4 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-4 gap-6 mb-12">
+      <div className="grid grid-rows-1 grid-cols-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6 mb-12">
         {products.map((item) => (
           <Card
             key={item.id}

@@ -13,9 +13,8 @@ import Footer from '../landing-components/Footer';
 const LandingPage = () => {
   return (
     <div>
-      <Banner />
+      <Nav />
       <div className="px-28">
-        <Nav />
         <Hero />
         <BrandSection />
         <GirlsSection />

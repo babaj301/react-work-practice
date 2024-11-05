@@ -21,7 +21,7 @@ const PictureSection = () => {
             <img src="./assets/arrow-up-right.svg" alt="" />
           </div>
 
-          <div className="text-3xl text-white absolute bottom-0 left-0 w-full font-semibold bg-gradient-to-b from-[#00000000] to-[#0000008C] pl-8 pt-10">
+          <div className="text-3xl text-white absolute bottom-0 left-0 w-full font-semibold bg-gradient-to-b from-[#00000000] to-[#0000008C] sm:pl-2 md:pl-4 pt-10">
             <div className="gap-2 flex items-center justify-between mx-6 min-w-48">
               <div className="mb-6">
                 <p>Kiddies Korean</p>

@@ -45,7 +45,10 @@ const Card = ({
         </div>
 
         <div className="flex justify-between items-center gap-2">
-          <p className="font-medium text-[#101928] text-base"> {category}</p>
+          <p className="font-medium text-[#101928] text-base">
+            {' '}
+            {category.charAt(0).toUpperCase() + category.slice(1)}
+          </p>
           <p className="font-semibold text-lg">
             <span className="text-xs lg:text-sm font-semibold">$</span>
             {splitPrice[0]}.

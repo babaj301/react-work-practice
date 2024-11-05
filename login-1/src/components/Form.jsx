@@ -28,19 +28,14 @@ const Form = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!emailRegex.test(email)) {
-      console.log(email, password);
       setVerified(false);
-    } else if (emailRegex && password.length < 2) {
+    } else if (emailRegex && password.length < 1) {
       setVerified(false);
     } else if (emailRegex.test(email) && password) {
-      console.log(email, password);
       setVerified(true);
     } else {
-      console.log(email, password);
       setVerified(false);
     }
-
-    console.log(email, password);
   };
 
   const handlePasswordChange = (e) => {
@@ -48,15 +43,12 @@ const Form = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!emailRegex.test(email)) {
-      console.log(email, password);
       setVerified(false);
     } else if (emailRegex && password.length < 2) {
       setVerified(false);
     } else if (emailRegex.test(email) && password) {
-      console.log(email, password);
       setVerified(true);
     } else {
-      console.log(email, password);
       setVerified(false);
     }
   };
