@@ -161,6 +161,8 @@ const Nav = () => {
       ) : null}
 
       {/* Cart Modal */}
+
+      {/* Cart Modal */}
       {!searching && showCart ? (
         <div className="h-screen top-0 bottom-0 bg-slate-700/60 flex relative items-center justify-center">
           <div className="bg-white absolute top-0 right-0 h-screen w-full max-w-[450px]">
@@ -172,35 +174,43 @@ const Nav = () => {
               </button>
             </div>
 
-            {/* Scrollable Cart Content */}
-            <div className="flex flex-col gap-6 bg-white px-12 pb-32 max-h-[80vh] min-w-[200px] overflow-y-auto">
-              {cart.map((item) => (
-                <div key={item.id} className="flex flex-col gap-4">
-                  <img
-                    className="w-full object-cover max-w-[260px] min-h-[260px] max-h-[260px] rounded-md"
-                    src={item.image}
-                    alt=""
-                  />
-                  <div className="flex justify-between items-center max-w-[260px]">
-                    <p className="font-medium text-[#101928] text-base">
-                      {item.category.charAt(0).toUpperCase() +
-                        item.category.slice(1)}
-                    </p>
-                    <p className="font-semibold text-lg">
-                      <span className="text-xs lg:text-sm font-semibold">
-                        $
-                      </span>
-                      {item.price}
-                    </p>
+            {/* Conditionally Render Cart Content or Empty Message */}
+            {cart.length > 0 ? (
+              <div className="flex flex-col gap-6 bg-white px-12 pb-32 max-h-[80vh] min-w-[200px] overflow-y-auto">
+                {cart.map((item) => (
+                  <div key={item.id} className="flex flex-col gap-4">
+                    <img
+                      className="w-full object-cover max-w-[260px] min-h-[260px] max-h-[260px] rounded-md"
+                      src={item.image}
+                      alt=""
+                    />
+                    <div className="flex justify-between items-center max-w-[260px]">
+                      <p className="font-medium text-[#101928] text-base">
+                        {item.category.charAt(0).toUpperCase() +
+                          item.category.slice(1)}
+                      </p>
+                      <p className="font-semibold text-lg">
+                        <span className="text-xs lg:text-sm font-semibold">
+                          $
+                        </span>
+                        {item.price}
+                      </p>
+                    </div>
+                    <div className="flex gap-2 border-gray-400 border-2 rounded-full w-full items-center justify-evenly text-lg">
+                      <button onClick={() => removeFromCart(item)}>-</button>
+                      <p>{item.quantity}</p>
+                      <button onClick={() => addToCart(item)}>+</button>
+                    </div>
                   </div>
-                  <div className="flex gap-2 border-gray-400 border-2 rounded-full w-full items-center justify-evenly text-lg">
-                    <button onClick={() => removeFromCart(item)}>-</button>
-                    <p>{item.quantity}</p>
-                    <button onClick={() => addToCart(item)}>+</button>
-                  </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            ) : (
+              <div className="flex items-center justify-center h-full">
+                <p className="text-lg font-medium text-gray-500">
+                  No items in your cart
+                </p>
+              </div>
+            )}
 
             {/* Fixed Total Amount at Bottom */}
             <div className="px-4 py-4 w-full fixed bottom-0 bg-white border-t border-gray-200 text-lg font-medium flex justify-between items-center">
