@@ -41,7 +41,8 @@ const Nav = () => {
         const filtered = json.filter((n) =>
           n.category.includes(search.toLowerCase())
         );
-        setProducts(filtered.slice(1, 9));
+
+        setProducts(filtered.slice(1, 5));
         console.log(filtered);
       });
   }, [search]);
@@ -49,10 +50,11 @@ const Nav = () => {
   const handleSearch = (e) => {
     const value = e.target.value;
     setSearch(value);
+    if (search === '') {
+      setSearching(false);
+    }
     if (search) {
       setSearching(true);
-    } else if (search === '') {
-      setSearching(false);
     }
   };
 
@@ -118,17 +120,19 @@ const Nav = () => {
         </nav>
       </div>
       {/* The Modal Products */}
-      {searching ? (
-        <div className="h-screen bg-slate-700/60 flex items-center justify-center pt-12">
+      {products.length > 1 && searching ? (
+        <div className=" bg-slate-700/60 flex items-center justify-center pt-4">
           <div className="bg-white">
             {/* Header and Button */}
             <div className="text-black px-12 flex justify-between">
-              <p className="text-3xl">Showing results for "{search}"</p>
-              <button onClick={onClose} className="text-3xl">
+              <p className="md:text-3xl text-sm">
+                Showing results for "{search}"
+              </p>
+              <button onClick={onClose} className="md:text-3xl text-sm">
                 X
               </button>
             </div>
-            <div className="grid grid-flow-row bg-white px-12 py-12 min-h-[400px] max-h-screen max-w-[1000px] grid-cols-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6 mb-12 overflow-y-auto">
+            <div className="grid grid-flow-row bg-white px-12 py-12 min-h-[400px] max-h-screen max-w-[1000px] grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6 mb-12 overflow-y-auto">
               {products.map((item) => (
                 <Card
                   key={item.id}
@@ -154,8 +158,8 @@ const Nav = () => {
       ) : null}
 
       {/* Cart Modal */}
-      {showCart ? (
-        <div className="h-screen bg-slate-700/60 flex relative items-center justify-center">
+      {!searching && showCart ? (
+        <div className="h-screen top-0 bottom-0 bg-slate-700/60 flex relative items-center justify-center">
           <div className="bg-white absolute top-0 right-0">
             {/* Header and Button */}
             <div className="text-black px-12 flex justify-between">
@@ -164,7 +168,7 @@ const Nav = () => {
                 X
               </button>
             </div>
-            <div className="flex flex-col gap-6 bg-white px-12 py-12 min-h-[400px] max-h-[80vh] w-[400px] max-w-[450px] overflow-y-auto">
+            <div className="flex flex-col gap-6 bg-white px-12 py-12 min-h-[400px] max-h-[92vh] min-w-[200px] max-w-[450px]  overflow-y-auto">
               {cart.map((item) => (
                 <div key={item.id}>
                   <div className=" flex flex-col gap-1 justify-evenly min-h-[400px] max-h-[450px]">

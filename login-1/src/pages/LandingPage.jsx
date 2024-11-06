@@ -1,5 +1,4 @@
 import React from 'react';
-import Banner from '../landing-components/Banner';
 import Nav from '../landing-components/Nav';
 import Hero from '../landing-components/Hero';
 import BrandSection from '../landing-components/BrandSection';
@@ -12,9 +11,9 @@ import Footer from '../landing-components/Footer';
 
 const LandingPage = () => {
   return (
-    <div>
+    <div className="min-w-[700px]">
       <Nav />
-      <div className="px-28">
+      <div className="px-28 ">
         <Hero />
         <BrandSection />
         <GirlsSection />

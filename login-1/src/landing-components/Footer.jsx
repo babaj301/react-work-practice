@@ -14,8 +14,8 @@ const Footer = () => {
             </p>
           </div>
 
-          <div className="flex gap-2">
-            <div className="w-[60%] lg:max-w-[238px] flex justify-center items-center border hover:border-rayna-secondary rounded-md p-4">
+          <div className="flex gap-2 sm:flex-col">
+            <div className="w-[60%] sm:w-[140px] lg:max-w-[238px] flex justify-center items-center border hover:border-rayna-secondary rounded-md p-4">
               <input
                 type="email"
                 name="email"
