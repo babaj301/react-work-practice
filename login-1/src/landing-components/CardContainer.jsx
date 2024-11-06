@@ -12,7 +12,7 @@ const CardContainer = () => {
     fetch('https://fakestoreapi.com/products')
       .then((res) => res.json())
       .then((json) => {
-        const firstFive = json.slice(10, 15);
+        const firstFive = json.slice(10, 14);
         setProducts(firstFive);
         setLoading(false); // Set loading to false once data is fetched
       });
@@ -37,7 +37,7 @@ const CardContainer = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12">
         {loading
-          ? Array(5)
+          ? Array(4)
               .fill(0)
               .map((_, index) => <LoadingCard key={index} />)
           : products.map((item) => (

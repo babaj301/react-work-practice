@@ -8,18 +8,16 @@ import Card from './Card';
 
 import { StoreContext } from '../StoreContext';
 import { useContext, useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 const Nav = () => {
   const { cart, updateCart, deleteCart } = useContext(StoreContext);
   const [search, setSearch] = useState('');
   const [searching, setSearching] = useState(false);
   const [products, setProducts] = useState([]);
-  const [filteredProducts, setFilteredProducts] = useState([]);
-  const navigate = useNavigate();
+  const [showCart, setShowCart] = useState(false);
 
   const handleCart = () => {
-    navigate('/landing/cart');
+    setShowCart(!showCart);
   };
 
   const addToCart = (item) => {
@@ -62,6 +60,10 @@ const Nav = () => {
     setSearching(false);
     setSearch();
   };
+
+  const onCartClose = () => {
+    setShowCart(false);
+  };
   return (
     <section className="mb-32 fixed right-0 left-0 top-0 z-20">
       <div className="flex bg-white w-full  justify-center flex-col ">
@@ -83,7 +85,7 @@ const Nav = () => {
             <input
               type="text"
               onChange={handleSearch}
-              className="appearance-none focus:outline-none bg-transparent indent-8"
+              className="appearance-none focus:outline-none bg-transparent indent-8 w-full"
               placeholder="Search here..."
             />
           </div>
@@ -145,6 +147,72 @@ const Nav = () => {
                     removeFromCart(item);
                   }}
                 />
+              ))}
+            </div>
+          </div>
+        </div>
+      ) : null}
+
+      {/* Cart Modal */}
+      {showCart ? (
+        <div className="h-screen bg-slate-700/60 flex relative items-center justify-center">
+          <div className="bg-white absolute top-0 right-0">
+            {/* Header and Button */}
+            <div className="text-black px-12 flex justify-between">
+              <p className="text-3xl">Cart</p>
+              <button onClick={onCartClose} className="text-1xl">
+                X
+              </button>
+            </div>
+            <div className="flex flex-col gap-6 bg-white px-12 py-12 min-h-[400px] max-h-[80vh] w-[400px] max-w-[450px] overflow-y-auto">
+              {cart.map((item) => (
+                <div key={item.id}>
+                  <div className=" flex flex-col gap-1 justify-evenly min-h-[400px] max-h-[450px]">
+                    <div className="flex flex-col justify-evenly w-full">
+                      <img
+                        className="w-full object-cover max-w-[260px] min-h-[260px] max-h-[260px] rounded-md"
+                        src={item.image}
+                        alt=""
+                      />
+                    </div>
+
+                    <div className="flex flex-col gap-2 justify-evenly">
+                      <div className="flex justify-between max-w-[260px] items-center gap-2">
+                        <p className="font-medium text-[#101928] text-base">
+                          {item.category.charAt(0).toUpperCase() +
+                            item.category.slice(1)}
+                        </p>
+                        <p className="font-semibold text-lg">
+                          <span className="text-xs lg:text-sm font-semibold">
+                            $
+                          </span>
+                          {item.price}
+                        </p>
+                      </div>
+                      <p className="text-xs max-w-[260px] text-[#1D2739]">
+                        {item.title}
+                      </p>
+
+                      <div className="flex gap-2 border-gray-400 border-2 rounded-full w-full items-center justify-evenly text-lg">
+                        <button
+                          onClick={() => {
+                            removeFromCart(item);
+                          }}
+                        >
+                          -
+                        </button>
+                        <p>{item.quantity}</p>
+                        <button
+                          onClick={() => {
+                            addToCart(item);
+                          }}
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               ))}
             </div>
           </div>
