@@ -8,6 +8,7 @@ export const StoreProvider = ({ children }) => {
     const savedCart = localStorage.getItem('cart');
     return savedCart ? JSON.parse(savedCart) : [];
   });
+  const [total, setTotal] = useState(0);
 
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));

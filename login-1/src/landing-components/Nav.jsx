@@ -125,14 +125,17 @@ const Nav = () => {
           <div className="bg-white">
             {/* Header and Button */}
             <div className="text-black px-12 flex justify-between">
-              <p className="md:text-3xl text-sm">
+              <p className="md:text-3xl font-medium text-sm">
                 Showing results for "{search}"
               </p>
-              <button onClick={onClose} className="md:text-3xl text-sm">
+              <button
+                onClick={onClose}
+                className="md:text-3xl font-medium text-sm"
+              >
                 X
               </button>
             </div>
-            <div className="grid grid-flow-row bg-white px-12 py-12 min-h-[400px] max-h-screen max-w-[1000px] grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6 mb-12 overflow-y-auto">
+            <div className="grid grid-flow-row bg-white px-12 min-h-[60vh] max-h-[70vh] max-w-[1000px] grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6 mb-12 overflow-y-auto">
               {products.map((item) => (
                 <Card
                   key={item.id}
@@ -160,64 +163,53 @@ const Nav = () => {
       {/* Cart Modal */}
       {!searching && showCart ? (
         <div className="h-screen top-0 bottom-0 bg-slate-700/60 flex relative items-center justify-center">
-          <div className="bg-white absolute top-0 right-0">
-            {/* Header and Button */}
-            <div className="text-black px-12 flex justify-between">
+          <div className="bg-white absolute top-0 right-0 h-screen w-full max-w-[450px]">
+            {/* Header and Close Button */}
+            <div className="text-black px-4 py-2 flex justify-between items-center border-b border-gray-200">
               <p className="text-3xl">Cart</p>
               <button onClick={onCartClose} className="text-1xl">
                 X
               </button>
             </div>
-            <div className="flex flex-col gap-6 bg-white px-12 py-12 min-h-[400px] max-h-[92vh] min-w-[200px] max-w-[450px]  overflow-y-auto">
+
+            {/* Scrollable Cart Content */}
+            <div className="flex flex-col gap-6 bg-white px-12 pb-32 max-h-[80vh] min-w-[200px] overflow-y-auto">
               {cart.map((item) => (
-                <div key={item.id}>
-                  <div className=" flex flex-col gap-1 justify-evenly min-h-[400px] max-h-[450px]">
-                    <div className="flex flex-col justify-evenly w-full">
-                      <img
-                        className="w-full object-cover max-w-[260px] min-h-[260px] max-h-[260px] rounded-md"
-                        src={item.image}
-                        alt=""
-                      />
-                    </div>
-
-                    <div className="flex flex-col gap-2 justify-evenly">
-                      <div className="flex justify-between max-w-[260px] items-center gap-2">
-                        <p className="font-medium text-[#101928] text-base">
-                          {item.category.charAt(0).toUpperCase() +
-                            item.category.slice(1)}
-                        </p>
-                        <p className="font-semibold text-lg">
-                          <span className="text-xs lg:text-sm font-semibold">
-                            $
-                          </span>
-                          {item.price}
-                        </p>
-                      </div>
-                      <p className="text-xs max-w-[260px] text-[#1D2739]">
-                        {item.title}
-                      </p>
-
-                      <div className="flex gap-2 border-gray-400 border-2 rounded-full w-full items-center justify-evenly text-lg">
-                        <button
-                          onClick={() => {
-                            removeFromCart(item);
-                          }}
-                        >
-                          -
-                        </button>
-                        <p>{item.quantity}</p>
-                        <button
-                          onClick={() => {
-                            addToCart(item);
-                          }}
-                        >
-                          +
-                        </button>
-                      </div>
-                    </div>
+                <div key={item.id} className="flex flex-col gap-4">
+                  <img
+                    className="w-full object-cover max-w-[260px] min-h-[260px] max-h-[260px] rounded-md"
+                    src={item.image}
+                    alt=""
+                  />
+                  <div className="flex justify-between items-center max-w-[260px]">
+                    <p className="font-medium text-[#101928] text-base">
+                      {item.category.charAt(0).toUpperCase() +
+                        item.category.slice(1)}
+                    </p>
+                    <p className="font-semibold text-lg">
+                      <span className="text-xs lg:text-sm font-semibold">
+                        $
+                      </span>
+                      {item.price}
+                    </p>
+                  </div>
+                  <div className="flex gap-2 border-gray-400 border-2 rounded-full w-full items-center justify-evenly text-lg">
+                    <button onClick={() => removeFromCart(item)}>-</button>
+                    <p>{item.quantity}</p>
+                    <button onClick={() => addToCart(item)}>+</button>
                   </div>
                 </div>
               ))}
+            </div>
+
+            {/* Fixed Total Amount at Bottom */}
+            <div className="px-4 py-4 w-full fixed bottom-0 bg-white border-t border-gray-200 text-lg font-medium flex justify-between items-center">
+              <p>
+                Total Amount: $
+                {cart
+                  .reduce((acc, item) => acc + item.price * item.quantity, 0)
+                  .toFixed(2)}
+              </p>
             </div>
           </div>
         </div>
