@@ -202,15 +202,15 @@ const Nav = () => {
                 ))}
               </div>
             ) : (
-              <div className="flex border grow border-green-500 items-center justify-center h-screen ">
-                <p className="text-lg font-medium sm:mb-16 md:mb-48 text-gray-500">
+              <div className="flex border grow border-green-500 items-center justify-center h-screen md:min-h-[60vh] max-h-[70vh] ">
+                <p className="text-lg font-medium  text-gray-500">
                   No items in your cart
                 </p>
               </div>
             )}
 
             {/* Total Amount */}
-            <div className="px-4 py-4 w-full fixed bg-white border-t border-gray-200 text-lg font-medium flex justify-between items-center">
+            <div className="px-4 py-4 w-full absolute bottom-0 bg-white border-t border-gray-200 text-lg font-medium flex justify-between items-center">
               <p>
                 Total Amount: $
                 {cart
