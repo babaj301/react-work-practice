@@ -162,7 +162,7 @@ const Nav = () => {
 
       {/* Cart Modal */}
       {!searching && showCart ? (
-        <div className=" top-0 bottom-0 bg-slate-700/60 flex relative items-center justify-center">
+        <div className="top-0 bottom-0 max-h-[800px] bg-slate-700/60 flex relative items-center justify-center">
           <div className="bg-white absolute top-0 right-0  w-full max-w-[450px]">
             {/* Header and Close Button */}
             <div className="text-black px-4 py-2 m-auto flex justify-between items-center border-b border-gray-400">
