@@ -161,22 +161,19 @@ const Nav = () => {
       ) : null}
 
       {/* Cart Modal */}
-
-      {/* Cart Modal */}
       {!searching && showCart ? (
-        <div className="h-screen top-0 bottom-0 bg-slate-700/60 flex relative items-center justify-center">
-          <div className="bg-white absolute top-0 right-0 h-screen w-full max-w-[450px]">
+        <div className=" top-0 bottom-0 bg-slate-700/60 flex relative items-center justify-center">
+          <div className="bg-white absolute top-0 right-0  w-full max-w-[450px]">
             {/* Header and Close Button */}
-            <div className="text-black px-4 py-2 flex justify-between items-center border-b border-gray-200">
+            <div className="text-black px-4 py-2 m-auto flex justify-between items-center border-b border-gray-400">
               <p className="text-3xl">Cart</p>
-              <button onClick={onCartClose} className="text-1xl">
+              <button onClick={onCartClose} className="text-2xl">
                 X
               </button>
             </div>
 
-            {/* Conditionally Render Cart Content or Empty Message */}
             {cart.length > 0 ? (
-              <div className="flex flex-col gap-6 bg-white px-12 pb-32 max-h-[80vh] min-w-[200px] overflow-y-auto">
+              <div className="flex flex-col items-center gap-6 bg-white px-12 pb-32 h-screen  min-w-[200px] overflow-y-auto">
                 {cart.map((item) => (
                   <div key={item.id} className="flex flex-col gap-4">
                     <img
@@ -205,15 +202,15 @@ const Nav = () => {
                 ))}
               </div>
             ) : (
-              <div className="flex items-center justify-center h-full">
-                <p className="text-lg font-medium text-gray-500">
+              <div className="flex border grow border-green-500 items-center justify-center h-screen ">
+                <p className="text-lg font-medium sm:mb-16 md:mb-48 text-gray-500">
                   No items in your cart
                 </p>
               </div>
             )}
 
-            {/* Fixed Total Amount at Bottom */}
-            <div className="px-4 py-4 w-full fixed bottom-0 bg-white border-t border-gray-200 text-lg font-medium flex justify-between items-center">
+            {/* Total Amount */}
+            <div className="px-4 py-4 w-full fixed bg-white border-t border-gray-200 text-lg font-medium flex justify-between items-center">
               <p>
                 Total Amount: $
                 {cart
