@@ -1,7 +1,7 @@
-import ChineseGirls from '../assets/landing-assets/chinese-girls.svg';
-import Pool from '../assets/landing-assets/pool.svg';
-import Arrow from '../assets/landing-assets/shop-arrow.svg';
-import PurpleShoes from '../assets/landing-assets/purple-shoe.svg';
+import ChineseGirls from '../../assets/landing-assets/chinese-girls.svg';
+import Pool from '../../assets/landing-assets/pool.svg';
+import Arrow from '../../assets/landing-assets/shop-arrow.svg';
+import PurpleShoes from '../../assets/landing-assets/purple-shoe.svg';
 
 const PictureSection = () => {
   return (

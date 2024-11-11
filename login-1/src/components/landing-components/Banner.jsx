@@ -1,5 +1,5 @@
 import React from 'react';
-import Divider from '../assets/landing-assets/divider.svg';
+import Divider from '../../assets/landing-assets/divider.svg';
 
 const Banner = () => {
   return (

@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import Card from './Card';
 import LoadingCard from './LoadingCard';
-import { StoreContext } from '../StoreContext';
+import { StoreContext } from '../../StoreContext';
 
 const CardContainer = () => {
   const [products, setProducts] = useState([]);

@@ -1,6 +1,6 @@
 import React from 'react';
-import Star from '../assets/landing-assets/stars.svg';
-import Cart from '../assets/landing-assets/cart.svg';
+import Star from '../../assets/landing-assets/stars.svg';
+import Cart from '../../assets/landing-assets/cart.svg';
 import { useState } from 'react';
 
 const Card = ({
@@ -51,8 +51,8 @@ const Card = ({
           </p>
           <p className="font-semibold text-lg">
             <span className="text-xs lg:text-sm font-semibold">$</span>
-            {splitPrice[0]}.
-            <span className="text-xs font-semibold">{splitPrice[1]}</span>
+            {splitPrice[0]}
+            <span className="text-xs font-semibold">.{splitPrice[1]}</span>
           </p>
         </div>
         <p className="text-xs text-[#1D2739]">{title.slice(0, 30)}</p>

@@ -1,8 +1,8 @@
 import React from 'react';
-import Girls from '../assets/landing-assets/girl-legs.jpeg';
-import Arrow from '../assets/landing-assets/shop-arrow.svg';
-import AddidasImage from '../assets/landing-assets/addidas-shoes.svg';
-import GirlShoes from '../assets/landing-assets/girl-shoes.svg';
+import Girls from '../../assets/landing-assets/girl-legs.jpeg';
+import Arrow from '../../assets/landing-assets/shop-arrow.svg';
+import AddidasImage from '../../assets/landing-assets/addidas-shoes.svg';
+import GirlShoes from '../../assets/landing-assets/girl-shoes.svg';
 
 const GirlsSection = () => {
   return (

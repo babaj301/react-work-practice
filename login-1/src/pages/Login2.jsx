@@ -1,4 +1,4 @@
-import Form from '../components/Form';
+import Form from '../containers/Form';
 import Navbar2 from '../components/Navbar2';
 
 const Login2 = () => {

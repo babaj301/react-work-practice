@@ -1,8 +1,8 @@
-import Logo from '../assets/landing-assets/rayna-logo.svg';
-import Search from '../assets/landing-assets/search.svg';
-import User from '../assets/landing-assets/user.svg';
-import Heart from '../assets/landing-assets/heart.svg';
-import CartIcon from '../assets/landing-assets/cart.svg';
+import Logo from '../../assets/landing-assets/rayna-logo.svg';
+import Search from '../../assets/landing-assets/search.svg';
+import User from '../../assets/landing-assets/user.svg';
+import Heart from '../../assets/landing-assets/heart.svg';
+import CartIcon from '../../assets/landing-assets/cart.svg';
 import Banner from './Banner';
 import Card from './Card';
 

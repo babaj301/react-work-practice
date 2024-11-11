@@ -1,6 +1,6 @@
 import React from 'react';
-import BackgroundImage from '../assets/landing-assets/waves.svg';
-import Arrow from '../assets/landing-assets/shop-arrow.svg';
+import BackgroundImage from '../../assets/landing-assets/waves.svg';
+import Arrow from '../../assets/landing-assets/shop-arrow.svg';
 
 const Hero = () => {
   return (

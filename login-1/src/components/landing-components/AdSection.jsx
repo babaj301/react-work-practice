@@ -1,6 +1,6 @@
 import React from 'react';
-import Arrow from '../assets/landing-assets/shop-arrow.svg';
-import BackgroundImg from '../assets/landing-assets/banner.png';
+import Arrow from '../../assets/landing-assets/shop-arrow.svg';
+import BackgroundImg from '../../assets/landing-assets/banner.png';
 
 const AdSection = () => {
   return (

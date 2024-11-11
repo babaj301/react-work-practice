@@ -1,8 +1,8 @@
 import React from 'react';
-import Nike from '../assets/landing-assets/brands/nike.svg';
-import Adiddas from '../assets/landing-assets/brands/adiddas.svg';
-import NorthFace from '../assets/landing-assets/brands/northface.svg';
-import Zara from '../assets/landing-assets/brands/zara.svg';
+import Nike from '../../assets/landing-assets/brands/nike.svg';
+import Adiddas from '../../assets/landing-assets/brands/adiddas.svg';
+import NorthFace from '../../assets/landing-assets/brands/northface.svg';
+import Zara from '../../assets/landing-assets/brands/zara.svg';
 
 const BrandSection = () => {
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import OriginalProdImg from '../assets/landing-assets/original-prod.svg';
+import OriginalProdImg from '../../assets/landing-assets/original-prod.svg';
 
 const Features = ({ text }) => {
   return (
