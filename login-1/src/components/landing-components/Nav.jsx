@@ -6,7 +6,7 @@ import CartIcon from '../assets/landing-assets/cart.svg';
 import Banner from './Banner';
 import Card from './Card';
 
-import { StoreContext } from '../StoreContext';
+import { StoreContext } from '../../StoreContext';
 import { useContext, useState, useEffect } from 'react';
 
 const Nav = () => {
