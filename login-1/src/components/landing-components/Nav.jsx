@@ -173,7 +173,7 @@ const Nav = () => {
             </div>
 
             {cart.length > 0 ? (
-              <div className="flex flex-col items-center gap-6 bg-white px-12 pb-32 h-screen  min-w-[200px] overflow-y-auto">
+              <div className="flex flex-col items-center gap-6 bg-white px-12 pb-32 h-[60vh]  min-w-[200px] overflow-y-auto">
                 {cart.map((item) => (
                   <div key={item.id} className="flex flex-col gap-4">
                     <img
