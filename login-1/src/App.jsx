@@ -9,11 +9,21 @@ import {
   Navigate,
 } from 'react-router-dom';
 
-import { StoreProvider } from './StoreContext';
+// import { StoreProvider } from './StoreContext';
 function App() {
   return (
     <div>
-      <StoreProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Login1 />} />
+          <Route path="/login2" element={<Login2 />} />
+          <Route path="/landing/cart" element={<Cart />} />
+          <Route path="/landing" element={<LandingPage />} />
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      </Router>
+
+      {/* <StoreProvider>
         <Router>
           <Routes>
             <Route path="/" element={<Login1 />} />
@@ -23,7 +33,7 @@ function App() {
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </Router>
-      </StoreProvider>
+      </StoreProvider> */}
     </div>
   );
 }

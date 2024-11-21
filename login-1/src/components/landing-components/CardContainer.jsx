@@ -2,30 +2,47 @@ import { useState, useEffect, useContext } from 'react';
 import Card from './Card';
 import LoadingCard from './LoadingCard';
 import { StoreContext } from '../../StoreContext';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchProducts, updateCart, deleteCart } from '../../redux/storeSlice';
 
 const CardContainer = () => {
-  const [products, setProducts] = useState([]);
+  // const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true); // New loading state
-  const { cart, updateCart, deleteCart } = useContext(StoreContext);
+  const [filtered, setFiltered] = useState([]);
+  // const { cart, updateCart, deleteCart } = useContext(StoreContext);
+  const { products, cart } = useSelector(
+    (state) => state.store || { cart: [], products: [] }
+  );
+  const dispatch = useDispatch();
+
+  // Redux version of fetch products
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
+
+  // useEffect(() => {
+  //   fetch('https://fakestoreapi.com/products')
+  //     .then((res) => res.json())
+  //     .then((json) => {
+  //       const firstFive = json.slice(10, 14);
+  //       setProducts(firstFive);
+  //       setLoading(false); // Set loading to false once data is fetched
+  //     });
+  // }, []);
 
   useEffect(() => {
-    fetch('https://fakestoreapi.com/products')
-      .then((res) => res.json())
-      .then((json) => {
-        const firstFive = json.slice(10, 14);
-        setProducts(firstFive);
-        setLoading(false); // Set loading to false once data is fetched
-      });
-  }, []);
+    setFiltered(products.slice(10, 14));
+    setLoading(false); // Set loading to false once data is fetched
+  }, [products]);
 
   const addToCart = (item) => {
-    updateCart(item);
+    dispatch(updateCart(item));
   };
 
   const removeFromCart = (item) => {
     const quantity = cart.find((i) => i.id === item.id)?.quantity || 0;
     if (quantity > 0) {
-      deleteCart(item);
+      dispatch(deleteCart(item));
     }
   };
 
@@ -40,7 +57,7 @@ const CardContainer = () => {
           ? Array(4)
               .fill(0)
               .map((_, index) => <LoadingCard key={index} />)
-          : products.map((item) => (
+          : filtered.map((item) => (
               <Card
                 key={item.id}
                 image={item.image}

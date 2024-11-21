@@ -8,44 +8,76 @@ import Card from './Card';
 
 import { StoreContext } from '../../StoreContext';
 import { useContext, useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchProducts, updateCart, deleteCart } from '../../redux/storeSlice';
 
 const Nav = () => {
-  const { cart, updateCart, deleteCart } = useContext(StoreContext);
+  // const { cart, updateCart, deleteCart } = useContext(StoreContext);
+  const dispatch = useDispatch();
+  const { products, cart } = useSelector(
+    (state) => state.store || { cart: [], products: [] }
+  );
   const [search, setSearch] = useState('');
   const [searching, setSearching] = useState(false);
-  const [products, setProducts] = useState([]);
   const [showCart, setShowCart] = useState(false);
+  const [filtered, setFiltered] = useState([]);
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
 
   const handleCart = () => {
     setShowCart(!showCart);
   };
 
+  // const addToCart = (item) => {
+  //   updateCart(item);
+  //   console.log(cart);
+  // };
+
+  // const removeFromCart = (item) => {
+  //   const quantity = cart.find((i) => i.id === item.id)?.quantity || 0;
+  //   if (quantity > 0) {
+  //     deleteCart(item);
+  //   } else {
+  //     return;
+  //   }
+  // };
+
+  // Redux version of add to cart
   const addToCart = (item) => {
-    updateCart(item);
-    console.log(cart);
+    dispatch(updateCart(item));
   };
 
+  // Redux version of add to cart
   const removeFromCart = (item) => {
     const quantity = cart.find((i) => i.id === item.id)?.quantity || 0;
     if (quantity > 0) {
-      deleteCart(item);
+      dispatch(deleteCart(item));
     } else {
       return;
     }
   };
 
-  useEffect(() => {
-    fetch('https://fakestoreapi.com/products')
-      .then((res) => res.json())
-      .then((json) => {
-        const filtered = json.filter((n) =>
-          n.category.includes(search.toLowerCase())
-        );
+  // useEffect(() => {
+  //   fetch('https://fakestoreapi.com/products')
+  //     .then((res) => res.json())
+  //     .then((json) => {
+  //       const filtered = json.filter((n) =>
+  //         n.category.includes(search.toLowerCase())
+  //       );
 
-        setProducts(filtered.slice(1, 5));
-        console.log(filtered);
-      });
-  }, [search]);
+  //       setProducts(filtered.slice(1, 5));
+  //       console.log(filtered);
+  //     });
+  // }, [search]);
+
+  useEffect(() => {
+    const filtered = products.filter((n) =>
+      n.category.includes(search.toLowerCase())
+    );
+    setFiltered(filtered.slice(1, 5));
+  }, [search, products]);
 
   const handleSearch = (e) => {
     const value = e.target.value;
@@ -60,7 +92,7 @@ const Nav = () => {
 
   const onClose = () => {
     setSearching(false);
-    setSearch();
+    setSearch('');
   };
 
   const onCartClose = () => {
@@ -136,7 +168,7 @@ const Nav = () => {
               </button>
             </div>
             <div className="grid grid-flow-row bg-white px-12 min-h-[60vh] max-h-[70vh] max-w-[1000px] grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6 mb-12 overflow-y-auto">
-              {products.map((item) => (
+              {filtered.map((item) => (
                 <Card
                   key={item.id}
                   image={item.image}
