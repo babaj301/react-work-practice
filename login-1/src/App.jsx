@@ -10,6 +10,7 @@ import {
 } from 'react-router-dom';
 
 // import { StoreProvider } from './StoreContext';
+
 function App() {
   return (
     <div>
