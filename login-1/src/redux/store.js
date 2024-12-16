@@ -3,13 +3,11 @@ import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // Uses localStorage for web
 import storeReducer from './storeSlice';
 
-// Redux Persist configuration
 const persistConfig = {
-  key: 'root', // The key to store the persisted data under
+  key: 'root', // The key to store the data
   storage,
 };
 
-// Create a persisted reducer
 const persistedReducer = persistReducer(persistConfig, storeReducer);
 
 export const store = configureStore({

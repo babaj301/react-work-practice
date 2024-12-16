@@ -105,6 +105,7 @@ const Form = () => {
               placeholder="Enter email"
               value={email}
               onChange={handleEmailChange}
+              data-testid="email"
             />
             <img className="absolute right-6" src={MessageIcon} alt="" />
           </div>
@@ -125,6 +126,7 @@ const Form = () => {
               placeholder="Enter Password"
               value={password}
               onChange={handlePasswordChange}
+              data-testid="password"
             />
             <button
               onClick={changeEye}
@@ -141,6 +143,7 @@ const Form = () => {
             verified ? 'bg-[#EB5017]' : 'bg-[#EB5017] opacity-50'
           }`}
           type="submit"
+          data-testid="submit"
         >
           Log into Account
         </button>

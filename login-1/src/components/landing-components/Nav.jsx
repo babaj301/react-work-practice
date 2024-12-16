@@ -142,7 +142,12 @@ const Nav = () => {
                 className="flex relative flex-col gap-1 items-center justify-center text-center"
               >
                 <img src={CartIcon} alt="" />
-                <p className="text-[#101928] text-xs font-medium">Cart</p>
+                <p
+                  data-testid="cart-button"
+                  className="text-[#101928] text-xs font-medium"
+                >
+                  Cart
+                </p>
                 <div className="text-white text-md bg-amber-600 rounded-full w-5 h-5 flex justify-center items-center font-medium absolute left-6 top-0">
                   {cart.length}
                 </div>
@@ -181,6 +186,7 @@ const Nav = () => {
                   addToCart={() => {
                     addToCart(item);
                   }}
+                  data-testid="card"
                   quantity={cart.find((i) => i.id === item.id)?.quantity || 0}
                   deleteCart={() => {
                     removeFromCart(item);
@@ -198,8 +204,12 @@ const Nav = () => {
           <div className="bg-white absolute top-0 right-0  w-full max-w-[450px]">
             {/* Header and Close Button */}
             <div className="text-black px-4 py-2 m-auto flex justify-between items-center border-b border-gray-400">
-              <p className="text-3xl">Cart</p>
-              <button onClick={onCartClose} className="text-2xl">
+              <p className="text-3xl">CART</p>
+              <button
+                data-testid="close-button"
+                onClick={onCartClose}
+                className="text-2xl"
+              >
                 X
               </button>
             </div>
