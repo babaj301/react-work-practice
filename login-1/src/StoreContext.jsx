@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect, useMemo } from 'react';
 
 export const StoreContext = createContext();
 
@@ -40,9 +40,9 @@ export const StoreProvider = ({ children }) => {
 
   console.log(cart, 'cart');
 
+  const value = useMemo(() => ({ cart, updateCart, deleteCart }), [cart]);
+
   return (
-    <StoreContext.Provider value={{ cart, updateCart, deleteCart }}>
-      {children}
-    </StoreContext.Provider>
+    <StoreContext.Provider value={value}>{children}</StoreContext.Provider>
   );
 };
