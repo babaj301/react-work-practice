@@ -1,19 +1,17 @@
-import { useState } from 'react';
-import Header from '../components/Header';
-import RememberSection from '../components/RememberSection';
-import Button from '../components/Button';
-import SlashIcon from '../assets/not-slashed.svg';
-import Eye from '../assets/eye.svg';
-import MessageIcon from '../assets/message.svg';
-import Google from '../assets/icons8-google.svg';
-import Twitter from '../assets/icons8-twitter.svg';
-import AccountSection from '../components/AccountSection';
-import { useNavigate } from 'react-router-dom';
-import toast, { Toaster } from 'react-hot-toast';
+import { useState } from "react";
+import Header from "../components/Header";
+import RememberSection from "../components/RememberSection";
+import SlashIcon from "../assets/not-slashed.svg";
+import Eye from "../assets/eye.svg";
+import MessageIcon from "../assets/message.svg";
+
+import AccountSection from "../components/AccountSection";
+import { useNavigate } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
 
 const Form = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [eye, setEye] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
   const [verified, setVerified] = useState(false);
@@ -63,24 +61,24 @@ const Form = () => {
 
     event.preventDefault();
 
-    if (email === '' || emailRegex.test(email) === false) {
+    if (email === "" || emailRegex.test(email) === false) {
       toast(`Please input a valid email`);
       return;
     }
 
-    if (password === '') {
+    if (password === "") {
       toast(`Please input a valid password`);
       return;
     }
 
-    if (emailRegex.test(email) && db.password !== '') {
+    if (emailRegex.test(email) && db.password !== "") {
       setVerified(true);
       db.email = email;
       db.password = password;
 
       console.log(db);
 
-      navigate('/landing');
+      navigate("/landing");
     }
 
     console.log(db);
@@ -88,8 +86,8 @@ const Form = () => {
   return (
     <div className="m-auto flex flex-col gap-6 lg:w-[400px]">
       <Header
-        heading={'Log In'}
-        paragraph={'Enter your credentials to access you account'}
+        heading={"Log In"}
+        paragraph={"Enter your credentials to access you account"}
       />
       <Toaster />
       <form name="email" method="post" onSubmit={handleSubmit}>
@@ -121,7 +119,7 @@ const Form = () => {
           <div className="w-full mt-1 mb-6 flex items-center relative placeholder-[#98A2B3]">
             <input
               className="w-full p-4 rounded-lg border border-[#D0D5DD] hover:border-[#FA9874] appearance-none outline-none shadow-md"
-              type={showPassword ? 'text' : 'password'}
+              type={showPassword ? "text" : "password"}
               id="password"
               placeholder="Enter Password"
               value={password}
@@ -140,7 +138,7 @@ const Form = () => {
         <RememberSection />
         <button
           className={`form-button w-full font-semibold text-base text-white py-4 px-6 rounded-lg mb-4 ${
-            verified ? 'bg-[#EB5017]' : 'bg-[#EB5017] opacity-50'
+            verified ? "bg-[#EB5017]" : "bg-[#EB5017] opacity-50"
           }`}
           type="submit"
           data-testid="submit"
@@ -148,17 +146,6 @@ const Form = () => {
           Log into Account
         </button>
       </form>
-
-      <div className="flex gap-2 items-center justify-center w-full mb-4">
-        <hr className="flex-grow" />
-        <p className="text-input-grey">OR</p>
-        <hr className="flex-grow" />
-      </div>
-      <div className="gap-6">
-        <Button logo={Google} text={'Continue with Google'} />
-        <Button logo={Twitter} text={'Continue with Twitter'} />
-      </div>
-      <AccountSection />
     </div>
   );
 };

@@ -1,4 +1,8 @@
+import axios from "axios";
+
 const AccountSection = () => {
+ 
+
   return (
     <div className="flex gap-1 justify-center items-center">
       <p className="text-sm font-normal text-input-grey">Are you new here?</p>
