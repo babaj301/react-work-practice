@@ -212,7 +212,7 @@ const Nav = () => {
           <div className="bg-white absolute top-0 right-0  w-full max-w-[450px]">
             {/* Header and Close Button */}
             <div className="text-black px-4 py-2 m-auto flex justify-between items-center border-b border-gray-400">
-              <p className="text-3xl">CART</p>
+              <p className="text-2xl font-semibold">Cart</p>
               <button
                 data-testid="close-button"
                 onClick={onCartClose}
