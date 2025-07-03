@@ -101,7 +101,7 @@ const Nav = () => {
   return (
     <section className="mb-32 fixed right-0 left-0 top-0 z-20">
       <div className="flex bg-white w-full  justify-center flex-col ">
-        <Banner />
+        {/* <Banner /> */}
         <nav className="flex flex-col lg:flex-row py-6 px-4 sm:px-8 md:px-12 lg:px-20 xl:px-28 gap-4 justify-between items-center">
           <div className="flex w-full lg:w-auto justify-between items-center gap-4">
             <img src={Logo} alt="logo" className="w-[50px] h-auto" />
