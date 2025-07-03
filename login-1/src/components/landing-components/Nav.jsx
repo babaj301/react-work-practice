@@ -102,10 +102,11 @@ const Nav = () => {
     <section className="mb-32 fixed right-0 left-0 top-0 z-20">
       <div className="flex bg-white w-full  justify-center flex-col ">
         <Banner />
-        <nav className="flex py-6 px-28 justify-evenly ">
-          <div className="flex gap-5 md:mr-10 lg:gap-20 items-center lg:mr-24">
-            <img src={Logo} alt="" />
-            <ul className="text-base hidden lg:flex text-[background: #101928; ] font-semibold flex gap-8 items-center ">
+        <nav className="flex flex-col lg:flex-row py-6 px-4 sm:px-8 md:px-12 lg:px-20 xl:px-28 gap-4 justify-between items-center">
+          <div className="flex w-full lg:w-auto justify-between items-center gap-4">
+            <img src={Logo} alt="logo" className="w-[50px] h-auto" />
+
+            <ul className="hidden lg:flex gap-6 text-sm md:text-base font-semibold">
               <a className="hover:underline" href="./men.html">
                 Men
               </a>
