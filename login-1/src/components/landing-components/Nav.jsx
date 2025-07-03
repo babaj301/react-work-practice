@@ -1,15 +1,15 @@
-import Logo from '../../assets/landing-assets/rayna-logo.svg';
-import Search from '../../assets/landing-assets/search.svg';
-import User from '../../assets/landing-assets/user.svg';
-import Heart from '../../assets/landing-assets/heart.svg';
-import CartIcon from '../../assets/landing-assets/cart.svg';
-import Banner from './Banner';
-import Card from './Card';
+import Logo from "../../assets/landing-assets/rayna-logo.svg";
+import Search from "../../assets/landing-assets/search.svg";
+import User from "../../assets/landing-assets/user.svg";
+import Heart from "../../assets/landing-assets/heart.svg";
+import CartIcon from "../../assets/landing-assets/cart.svg";
+import Banner from "./Banner";
+import Card from "./Card";
 
-import { StoreContext } from '../../StoreContext';
-import { useContext, useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchProducts, updateCart, deleteCart } from '../../redux/storeSlice';
+import { StoreContext } from "../../StoreContext";
+import { useContext, useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProducts, updateCart, deleteCart } from "../../redux/storeSlice";
 
 const Nav = () => {
   // const { cart, updateCart, deleteCart } = useContext(StoreContext);
@@ -17,7 +17,7 @@ const Nav = () => {
   const { products, cart } = useSelector(
     (state) => state.store || { cart: [], products: [] }
   );
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
   const [searching, setSearching] = useState(false);
   const [showCart, setShowCart] = useState(false);
   const [filtered, setFiltered] = useState([]);
@@ -82,7 +82,7 @@ const Nav = () => {
   const handleSearch = (e) => {
     const value = e.target.value;
     setSearch(value);
-    if (search === '') {
+    if (search === "") {
       setSearching(false);
     }
     if (search) {
@@ -92,7 +92,7 @@ const Nav = () => {
 
   const onClose = () => {
     setSearching(false);
-    setSearch('');
+    setSearch("");
   };
 
   const onCartClose = () => {
@@ -105,11 +105,19 @@ const Nav = () => {
         <nav className="flex py-6 px-28 justify-evenly ">
           <div className="flex gap-5 md:mr-10 lg:gap-20 items-center lg:mr-24">
             <img src={Logo} alt="" />
-            <ul className="text-base hidden lg:flex text-[background: #101928; ] font-semibold flex gap-8 items-center">
-              <a href="./men.html">Men</a>
-              <a href="./women.html">Women</a>
-              <a href="./kids.html">Kids</a>
-              <a href="./sale.html">On Sale</a>
+            <ul className="text-base hidden lg:flex text-[background: #101928; ] font-semibold flex gap-8 items-center ">
+              <a className="hover:underline" href="./men.html">
+                Men
+              </a>
+              <a className="hover:underline" href="./women.html">
+                Women
+              </a>
+              <a className="hover:underline" href="./kids.html">
+                Kids
+              </a>
+              <a className="hover:underline" href="./sale.html">
+                On Sale
+              </a>
             </ul>
           </div>
 

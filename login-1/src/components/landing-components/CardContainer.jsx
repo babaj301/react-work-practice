@@ -1,9 +1,10 @@
-import { useState, useEffect, useContext } from 'react';
-import Card from './Card';
-import LoadingCard from './LoadingCard';
-import { StoreContext } from '../../StoreContext';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchProducts, updateCart, deleteCart } from '../../redux/storeSlice';
+import { useState, useEffect, useContext } from "react";
+import Card from "./Card";
+import LoadingCard from "./LoadingCard";
+import { StoreContext } from "../../StoreContext";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProducts, updateCart, deleteCart } from "../../redux/storeSlice";
+import { motion } from "framer-motion";
 
 const CardContainer = () => {
   // const [products, setProducts] = useState([]);

@@ -5,7 +5,6 @@ import SlashIcon from "../assets/not-slashed.svg";
 import Eye from "../assets/eye.svg";
 import MessageIcon from "../assets/message.svg";
 
-import AccountSection from "../components/AccountSection";
 import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 

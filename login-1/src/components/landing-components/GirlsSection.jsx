@@ -1,8 +1,9 @@
-import React from 'react';
-import Girls from '../../assets/landing-assets/girl-legs.jpeg';
-import Arrow from '../../assets/landing-assets/shop-arrow.svg';
-import AddidasImage from '../../assets/landing-assets/addidas-shoes.svg';
-import GirlShoes from '../../assets/landing-assets/girl-shoes.svg';
+import React from "react";
+import Girls from "../../assets/landing-assets/girl-legs.jpeg";
+import Arrow from "../../assets/landing-assets/shop-arrow.svg";
+import AddidasImage from "../../assets/landing-assets/addidas-shoes.svg";
+import GirlShoes from "../../assets/landing-assets/girl-shoes.svg";
+import { motion } from "framer-motion";
 
 const GirlsSection = () => {
   return (
@@ -17,9 +18,15 @@ const GirlsSection = () => {
         </div>
       </div>
       <div className="pics-container grid grid-cols-2 grid-rows-2 min-h-[700px] max-h-[770px] gap-6">
-        <div
+        {/* Left large image */}
+        <motion.div
           className="relative bg-cover bg-center row-span-full rounded-lg pt-10"
           style={{ backgroundImage: `url(${Girls})` }}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          viewport={{ once: true, amount: 0.3 }}
         >
           <a
             className="p-1 ml-10 mt-10 bg-[#F56630] w-48 rounded-xl text-white font-semibold text-center text-sm"
@@ -41,16 +48,29 @@ const GirlsSection = () => {
               <img src={Arrow} alt="" />
             </button>
           </div>
-        </div>
+        </motion.div>
 
-        <div
+        {/* Top right image */}
+        <motion.div
           className="bg-cover bg-center min-h-[370px] rounded-lg"
           style={{ backgroundImage: `url(${AddidasImage})` }}
-        ></div>
-        <div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          viewport={{ once: true, amount: 0.3 }}
+        ></motion.div>
+
+        {/* Bottom right image */}
+        <motion.div
           className="bg-cover bg-center min-h-[370px] rounded-lg"
           style={{ backgroundImage: `url(${GirlShoes})` }}
-        ></div>
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          viewport={{ once: true, amount: 0.3 }}
+        ></motion.div>
       </div>
     </section>
   );
